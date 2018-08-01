@@ -1,0 +1,33 @@
+<!--
+<form method="post" action="tratamiento.php">
+   <p>
+       <label for="username">Tu nombre de usuario:</label>
+       <input type="text" name="username" id="username" />
+       
+       <br />
+       <label for="pass">Tu contraseña:</label>
+       <input type="password" name="pass" id="pass" />
+       -->
+
+ 
+
+<hr>
+
+<%- if user_signed_in?%>
+	logueado
+
+<H1>Formulario de Registro de Participantes</H1>
+
+<FORM ACTION="enviar_email.php" METHOD="post"> 
+ 
+<label for="first_name">Nombre</label> <INPUT type="text" size=36 name="first_name"></INPUT> <br>
+<label for="last_name">Apellido</label> <INPUT type="text" size=36 name="last_name"></INPUT> <br>
+<label for="email">E-mail</label> <INPUT type="email" size=36 name="email"></INPUT>  <br>
+<label for="telephone">Teléfono</label> <INPUT type="tel" size=36 name="telephone"></INPUT> <br>
+<label for="message">Describa su perfil</label> <TEXTAREA rows=5 cols=30 name="message"></TEXTAREA> 
+<br>
+<INPUT type="reset" value="Borrar"> <INPUT type="submit" value="Registrar"></a>
+ 
+<%end %>
+
+</FORM> 

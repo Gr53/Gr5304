@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MiApp01</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <div class="wrapper">
+      <div class="logo">Engativa Roporta</div>
+      
+      <nav>
+        <a href="#">Inicio</a>
+        <a href="#">Servicios</a>
+        <a href="#">Proyectos</a>
+        <a href="#">Contacto</a>
+      </nav>
+    </div>
+  </head>
+
+  <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= link_to 'Home', '/' %>
+    <%= link_to 'Poductos', productos_path %>
+    <%- if user_signed_in? %>
+      <%= link_to 'Salir', destroy_user_session_path(:authenticity_token => form_authenticity_token()), method: 'delete' %>
+    <%else%>
+      <%= link_to 'Iniciar secion', new_user_session_path %>
+      <%= link_to 'registro', new_user_registration_path %>
+    <%end%>
+
+    <%= yield %>
+  </body>
+</html>
