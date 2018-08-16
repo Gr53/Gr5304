@@ -6,20 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-PersonType.create({
-	person_type: "admin"
+@visitor=PersonType.create({
+	person_type: "visitor"
 	
 })
 
-10.times {
+10.times do
 	Person.create(
 	{
 	name1:Faker::Name.first_name, 
 	last_name1:Faker::Name.last_name,
 	last_name2:Faker::Name.last_name,
-	person_type:1
+	person_type:@visitor
 	})
 
-}
+end
 
 
