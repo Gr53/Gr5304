@@ -12,6 +12,28 @@
 
 ActiveRecord::Schema.define(version: 2018_08_14_130242) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "PERSONA", primary_key: "id_persona", id: :decimal, precision: 10, force: :cascade do |t|
+    t.string "nombre1", limit: 50
+    t.string "nombre2", limit: 50
+    t.decimal "id_tipo_persona", precision: 10
+    t.string "apellido1", limit: 50
+    t.bit_varying "apellido2", limit: 50
+  end
+
+  create_table "TIPO_PERSONA", primary_key: "id_tipo_persona", id: :decimal, precision: 10, force: :cascade do |t|
+    t.string "nombre", limit: 50
+  end
+
+  create_table "productos", force: :cascade do |t|
+    t.string "name"
+    t.string "tipo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "reports", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -19,4 +41,17 @@ ActiveRecord::Schema.define(version: 2018_08_14_130242) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "PERSONA", "\"TIPO_PERSONA\"", column: "id_tipo_persona", primary_key: "id_tipo_persona", name: "id_tipo_persona_fk"
 end
