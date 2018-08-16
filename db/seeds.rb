@@ -18,7 +18,7 @@ PersonType.create({
 	last_name1:Faker::Name.last_name,
 	last_name2:Faker::Name.last_name,
 	person_type:1
-	)
+	})
 
 }
 
