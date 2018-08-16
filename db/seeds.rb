@@ -11,8 +11,15 @@ PersonType.create({
 	
 })
 
+10.times {
+	Person.create(
+	{
+	name1:Faker::Name.first_name, 
+	last_name1:Faker::Name.last_name,
+	last_name2:Faker::Name.last_name,
+	person_type:1
+	)
+
+}
 
 
-10.times do
-
-end
