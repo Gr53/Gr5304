@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_14_130242) do
+ActiveRecord::Schema.define(version: 2018_08_16_143556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,22 @@ ActiveRecord::Schema.define(version: 2018_08_14_130242) do
 
   create_table "TIPO_PERSONA", primary_key: "id_tipo_persona", id: :decimal, precision: 10, force: :cascade do |t|
     t.string "nombre", limit: 50
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.string "name1"
+    t.string "last_name1"
+    t.string "last_name2"
+    t.bigint "person_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_type_id"], name: "index_people_on_person_type_id"
+  end
+
+  create_table "person_types", force: :cascade do |t|
+    t.string "person_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "productos", force: :cascade do |t|
@@ -54,4 +70,5 @@ ActiveRecord::Schema.define(version: 2018_08_14_130242) do
   end
 
   add_foreign_key "PERSONA", "\"TIPO_PERSONA\"", column: "id_tipo_persona", primary_key: "id_tipo_persona", name: "id_tipo_persona_fk"
+  add_foreign_key "people", "person_types"
 end
