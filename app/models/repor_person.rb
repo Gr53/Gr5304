@@ -1,0 +1,2 @@
+class ReporPerson < ApplicationRecord
+end

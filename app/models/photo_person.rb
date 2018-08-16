@@ -1,0 +1,2 @@
+class PhotoPerson < ApplicationRecord
+end
